@@ -7,7 +7,7 @@ public class MinThread extends Thread {
 		this.tekst = tekst;
 	}
 
-	public void setTekst(String tekst) {
+	public synchronized void setTekst(String tekst) {
 		this.tekst = tekst;
 	}
 
