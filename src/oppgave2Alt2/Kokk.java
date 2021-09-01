@@ -1,4 +1,4 @@
-package oppgave2;
+package oppgave2Alt2;
 
 public class Kokk extends Thread {
 
