@@ -1,4 +1,4 @@
-package oppgave2Alt2;
+package oppgave2Alt1;
 
 import java.util.Random;
 
@@ -25,16 +25,10 @@ public class Kokk extends Thread {
 				Thread.sleep(r * 1000);
 			} catch (InterruptedException e) {
 			}
-			synchronized (brett) {
-				if (brett.erFul()) {
-					try {
-						brett.wait();
-					} catch (InterruptedException e) {
-					}
-				}
+
 				brett.leggTil();
-				brett.notifyAll();
-			}
+
+
 		}
 	}
 

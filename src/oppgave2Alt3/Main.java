@@ -1,4 +1,4 @@
-package oppgave2Alt2;
+package oppgave2Alt3;
 
 public class Main {
 
@@ -18,7 +18,7 @@ public class Main {
 		}
 
 	}
-	
+// det er riktig. fiks burger id og print brett når sercitør henter
 
 //	I denne simuleringen har vi
 //	3 kokker [Anne, Erik, Knut]
@@ -34,10 +34,9 @@ public class Main {
 		skrivUtTabell(servitorer);
 		System.out.println("Kapasiteten til brettet er " + kAPASITET + " hamburgere.");
 		System.out.println("Vi starter ...");
-		System.out.println();
 	}
 
-	public static  void skrivUtTabell(String[] tab) {
+	private static void skrivUtTabell(String[] tab) {
 		System.out.print("[");
 		for (int i = 0; i < tab.length; i++) {
 			if (i < tab.length - 1) {

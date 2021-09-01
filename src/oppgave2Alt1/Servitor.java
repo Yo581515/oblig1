@@ -1,4 +1,4 @@
-package oppgave2Alt2;
+package oppgave2Alt1;
 
 import java.util.Random;
 
@@ -15,29 +15,16 @@ public class Servitor extends Thread {
 
 	@Override
 	public void run() {
-		setName(navn+" (Servitør)");
+		setName(navn + " (Servitør)");
 
 		while (true) {
 			int r = rand.nextInt(3) + 1;
 
 			try {
-				Thread.sleep(r*1000);
+				Thread.sleep(r * 1000);
 			} catch (InterruptedException e) {
 			}
-			synchronized (brett) {
-				
-				if (brett.erTom()) {
-					try {
-						System.out.println(
-								Thread.currentThread().getName() + " onsker aa ta hamburger, men brett tomt. Venter!");
-						brett.wait();
-					} catch (InterruptedException e) {
-					}
-				}
-				brett.fjernBurger();
-				brett.notifyAll();
-
-			}
+			brett.fjernBurger();
 		}
 	}
 }

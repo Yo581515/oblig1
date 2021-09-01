@@ -1,4 +1,4 @@
-package oppgave2Alt2;
+package oppgave2Alt1;
 
 public class Main {
 
