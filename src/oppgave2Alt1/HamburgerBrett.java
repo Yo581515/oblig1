@@ -16,12 +16,10 @@ public class HamburgerBrett {
 		synchronized (this) {
 			if (!erFul()) {
 				Hamburger nyBurger = new Hamburger();
-
 				// Hjelpet aa navigere antall burgere paa brettet, og om kapasitet nummer er
 				// riktig
 //				System.out.println("hamburgerBrett.size()  = " + hamburgerBrett.size());
 //				System.out.println("kAPASITET              = " + kAPASITET);
-
 				nyBurger.setId(burgerNr);
 				hamburgerBrett.add(nyBurger);
 				System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNr
@@ -33,16 +31,12 @@ public class HamburgerBrett {
 					this.wait();
 				} catch (InterruptedException e) {
 				}
-
 			}
-
 		}
-
 	}
 
 	public void fjernBurger() {
 		synchronized (this) {
-
 			if (hamburgerBrett.isEmpty()) {
 				try {
 					System.out.println(
@@ -50,17 +44,13 @@ public class HamburgerBrett {
 					this.wait();
 				} catch (InterruptedException e) {
 				}
-
 			} else {
 				Hamburger hFjernet = hamburgerBrett.remove();
 				System.out.println(Thread.currentThread().getName() + " tar av hamburger: (" + hFjernet.getId()
 						+ "). Brett " + hamburgerBrett);
 				this.notifyAll();
-
 			}
-
 		}
-
 	}
 
 	public boolean erFul() {
