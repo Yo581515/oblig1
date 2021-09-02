@@ -27,12 +27,13 @@ public class HamburgerBrett {
 				System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNr
 						+ "). Brett: " + hamburgerBrett);
 				burgerNr++;
+				this.notifyAll();
 			} else {
 				try {
 					this.wait();
 				} catch (InterruptedException e) {
 				}
-				this.notifyAll();
+
 			}
 
 		}
@@ -62,11 +63,8 @@ public class HamburgerBrett {
 
 	}
 
-
 	public boolean erFul() {
 		return hamburgerBrett.size() >= kAPASITET;
 	}
-
-
 
 }
