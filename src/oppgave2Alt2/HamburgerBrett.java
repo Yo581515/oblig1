@@ -45,11 +45,4 @@ public class HamburgerBrett {
 		return hamburgerBrett.size() >= kAPASITET;
 	}
 
-	@Override
-	public String toString() {
-		return "HamburgerBrett [hamburgerBrett=" + hamburgerBrett + "]";
-	}
-	
-	
-
 }
