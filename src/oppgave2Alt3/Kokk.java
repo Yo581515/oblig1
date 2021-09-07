@@ -20,7 +20,7 @@ public class Kokk extends Thread {
 
 		while (true) {
 			try {
-				int r = (int) Math.floor(Math.random() * 3000) + 3000; // mellom 3 og 6 sec //du burde ha random inne i
+				int r = (int) Math.floor(Math.random() * 1000) + 1000; // mellom 3 og 6 sec //du burde ha random inne i
 																		// while-løkken
 				// så du får nye tall hver gang
 				Hamburger burger = new Hamburger();
