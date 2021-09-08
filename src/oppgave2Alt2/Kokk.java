@@ -19,7 +19,7 @@ public class Kokk extends Thread {
 		setName(navn + " (Kokk)");
 
 		while (true) {
-			int r = rand.nextInt(4) + 1;
+			int r = rand.nextInt(3) + 1;
 
 			try {
 				Thread.sleep(r * 1000);
