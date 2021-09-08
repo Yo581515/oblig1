@@ -16,7 +16,7 @@ public class Kokk extends Thread {
 
 	@Override
 	public void run() {
-		setName(navn+" (Kokk)");
+		setName(navn + " (Kokk)");
 
 		while (true) {
 			int r = rand.nextInt(4) + 1;
@@ -28,6 +28,8 @@ public class Kokk extends Thread {
 			synchronized (brett) {
 				if (brett.erFul()) {
 					try {
+						String threadName = Thread.currentThread().getName();
+						System.out.println(threadName + " klar med hamburger, men brett fullt. Venter!");
 						brett.wait();
 					} catch (InterruptedException e) {
 					}

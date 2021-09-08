@@ -23,7 +23,8 @@ public class HamburgerBrett {
 			
 			nyBurger.setId(burgerNr);
 			hamburgerBrett.add(nyBurger);
-			System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNr + "). Brett: "
+			String threadName = Thread.currentThread().getName();
+			System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: "
 					+ hamburgerBrett);
 			burgerNr++;
 		}
@@ -32,7 +33,8 @@ public class HamburgerBrett {
 	public void fjernBurger() {
 		if (!erTom()) {
 			Hamburger hFjernet = hamburgerBrett.remove();
-			System.out.println(Thread.currentThread().getName() + " tar av hamburger: (" + hFjernet.getId()
+			String threadName = Thread.currentThread().getName();
+			System.out.println(threadName + " tar av hamburger: (" + hFjernet.getId()
 					+ "). Brett " + hamburgerBrett);
 		}
 	}
