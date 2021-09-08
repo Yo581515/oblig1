@@ -24,7 +24,7 @@ public class HamburgerBrett {
 			nyBurger.setId(burgerNr);
 			hamburgerBrett.add(nyBurger);
 			String threadName = Thread.currentThread().getName();
-			System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: "
+			System.out.println(threadName + " legger på hamburger (" + burgerNr + "). Brett: "
 					+ hamburgerBrett);
 			burgerNr++;
 		}
@@ -40,7 +40,7 @@ public class HamburgerBrett {
 	}
 
 	public synchronized boolean erTom() {
-		return hamburgerBrett.size() == 0;
+		return hamburgerBrett.isEmpty();
 	}
 
 	public synchronized boolean erFul() {

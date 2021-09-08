@@ -2,6 +2,8 @@ package oppgave3;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -9,7 +11,9 @@ import java.util.concurrent.locks.ReentrantLock;
 import oppgave2Alt1.Hamburger;
 
 public class HamburgerBrett {
-	private Queue<Hamburger> hamburgerBrett = new LinkedList<>();
+//	private Queue<Hamburger> hamburgerBrett = new LinkedList<>();
+	private BlockingQueue<Hamburger> hamburgerBrett = new LinkedBlockingQueue<>();
+
 	private int kAPASITET;
 	private int burgerNr = 1;
 
@@ -23,50 +27,50 @@ public class HamburgerBrett {
 	public void leggTil() {
 
 		try {
-			lock.lock();
-			if (erFul()) {
+//			lock.lock();
+//			if (erFul()) {
 //				Anne (kokk) klar med hamburger, men brett fullt. Venter!
-				String threadName = Thread.currentThread().getName();
-				System.out.println(threadName + " klar med hamburger, men brett fullt. Venter!");
-				notify.wait();
-			} else {
+//				String threadName = Thread.currentThread().getName();
+//				System.out.println(threadName + " klar med hamburger, men brett fullt. Venter!");
+//				notify.wait();
+//			} else {
 				Hamburger nyBurger = new Hamburger();
 				// Hjelpet aa navigere antall burgere paa brettet, og om kapasitet nummer er
 				// riktig
 //					System.out.println("hamburgerBrett.size()  = " + hamburgerBrett.size());
 //					System.out.println("kAPASITET              = " + kAPASITET);
 				nyBurger.setId(burgerNr);
-				hamburgerBrett.add(nyBurger);
+				hamburgerBrett.put(nyBurger);
 				String threadName = Thread.currentThread().getName();
 				System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
 				burgerNr++;
-				notify.signalAll();
-			} // else
+//				notify.signalAll();
+//			} // else
 		} catch (Exception e) {
-		} finally {
-			lock.unlock();
-		}
+		} //finally {
+//			lock.unlock();
+//		}
 	}// metode
 
 	public void fjernBurger() {
 		try {
-			lock.lock();
-			if (erTom()) {
-				String threadName = Thread.currentThread().getName();
-				System.out.println(threadName + " onsker aa ta hamburger, men brett tomt. Venter!");
-				notify.wait();
+//			lock.lock();
+//			if (erTom()) {
+//				String threadName = Thread.currentThread().getName();
+//				System.out.println(threadName + " onsker aa ta hamburger, men brett tomt. Venter!");
+//				notify.wait();
 
-			} else {
-				Hamburger hFjernet = hamburgerBrett.remove();
+//			} else {
+				Hamburger hFjernet = hamburgerBrett.take();
 				String threadName = Thread.currentThread().getName();
 				System.out.println(
 						threadName + " tar av hamburger: " + "(" + hFjernet.getId() + "). Brett " + hamburgerBrett);
 				notify.signalAll();
-			} // else
+//			} // else
 		} catch (Exception e) {
-		} finally {
-			lock.unlock();
-		}
+		}// finally {
+//			lock.unlock();
+//		}
 
 	}// metode
 
