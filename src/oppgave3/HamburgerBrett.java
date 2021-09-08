@@ -13,7 +13,7 @@ public class HamburgerBrett {
 	private int kAPASITET;
 	private int burgerNr = 1;
 
-	private Lock lock = new ReentrantLock();
+	private Lock lock = new ReentrantLock(true);
 	private Condition notify = lock.newCondition();
 
 	public HamburgerBrett(int kAPASITET) {
