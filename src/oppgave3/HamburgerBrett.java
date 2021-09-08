@@ -21,69 +21,60 @@ public class HamburgerBrett {
 	}
 
 	public void leggTil() {
-		if (erFul()) {
-			try {
-				lock.lock();
+
+		try {
+			lock.lock();
+			if (erFul()) {
 //				Anne (kokk) klar med hamburger, men brett fullt. Venter!
 				String threadName = Thread.currentThread().getName();
 				System.out.println(threadName + " klar med hamburger, men brett fullt. Venter!");
 				notify.wait();
-			} catch (InterruptedException e) {
-			} finally {
-				lock.unlock();
-			}
-		} else {
-			try {
-				lock.lock();
+			} else {
 				Hamburger nyBurger = new Hamburger();
 				// Hjelpet aa navigere antall burgere paa brettet, og om kapasitet nummer er
 				// riktig
-//						System.out.println("hamburgerBrett.size()  = " + hamburgerBrett.size());
-//						System.out.println("kAPASITET              = " + kAPASITET);
+//					System.out.println("hamburgerBrett.size()  = " + hamburgerBrett.size());
+//					System.out.println("kAPASITET              = " + kAPASITET);
 				nyBurger.setId(burgerNr);
 				hamburgerBrett.add(nyBurger);
 				String threadName = Thread.currentThread().getName();
 				System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
 				burgerNr++;
-				notify.notifyAll();
-			} finally {
-				lock.unlock();
-			}
-
-		} // else
+				notify.signalAll();
+			} // else
+		} catch (Exception e) {
+		} finally {
+			lock.unlock();
+		}
 	}// metode
 
 	public void fjernBurger() {
-		if (erTom()) {
-			try {
-				lock.lock();
-
+		try {
+			lock.lock();
+			if (erTom()) {
 				String threadName = Thread.currentThread().getName();
 				System.out.println(threadName + " onsker aa ta hamburger, men brett tomt. Venter!");
 				notify.wait();
 
-			} catch (Exception e) {
-			} finally {
-				lock.unlock();
-			}
-		} else {
-			try {
-				lock.lock();
+			} else {
 				Hamburger hFjernet = hamburgerBrett.remove();
 				String threadName = Thread.currentThread().getName();
-				System.out
-						.println(threadName + " tar av hamburger: (" + hFjernet.getId() + "). Brett " + hamburgerBrett);
-			} finally {
-				lock.unlock();
-			}
-		} // else
+				System.out.println(
+						threadName + " tar av hamburger: " + "(" + hFjernet.getId() + "). Brett " + hamburgerBrett);
+				notify.signalAll();
+			} // else
+		} catch (Exception e) {
+		} finally {
+			lock.unlock();
+		}
+
 	}// metode
 
-	private synchronized boolean erTom() {
+	private boolean erTom() {
 		return hamburgerBrett.isEmpty();
 	}
 
-	private synchronized boolean erFul() {
+	private boolean erFul() {
 		return hamburgerBrett.size() >= kAPASITET;
 	}
 

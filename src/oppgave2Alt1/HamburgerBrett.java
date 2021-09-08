@@ -17,7 +17,8 @@ public class HamburgerBrett {
 		if (erFul()) {
 			try {
 //				Anne (kokk) klar med hamburger, men brett fullt. Venter!
-				System.out.println(Thread.currentThread().getName() + " klar med hamburger, men brett fullt. Venter!");
+				String threadName = Thread.currentThread().getName();
+				System.out.println(threadName + " klar med hamburger, men brett fullt. Venter!");
 				this.wait();
 			} catch (InterruptedException e) {
 			}
@@ -29,8 +30,8 @@ public class HamburgerBrett {
 //				System.out.println("kAPASITET              = " + kAPASITET);
 			nyBurger.setId(burgerNr);
 			hamburgerBrett.add(nyBurger);
-			System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNr + "). Brett: "
-					+ hamburgerBrett);
+			String threadName = Thread.currentThread().getName();
+			System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
 			burgerNr++;
 			this.notifyAll();
 		}
@@ -38,17 +39,17 @@ public class HamburgerBrett {
 	}
 
 	public synchronized void fjernBurger() {
-		if (erTom() ) {
+		if (erTom()) {
 			try {
-				System.out
-						.println(Thread.currentThread().getName() + " onsker aa ta hamburger, men brett tomt. Venter!");
+				String threadName = Thread.currentThread().getName();
+				System.out.println(threadName + " onsker aa ta hamburger, men brett tomt. Venter!");
 				this.wait();
 			} catch (InterruptedException e) {
 			}
 		} else {
+			String threadName = Thread.currentThread().getName();
 			Hamburger hFjernet = hamburgerBrett.remove();
-			System.out.println(Thread.currentThread().getName() + " tar av hamburger: (" + hFjernet.getId()
-					+ "). Brett " + hamburgerBrett);
+			System.out.println(threadName + " tar av hamburger: (" + hFjernet.getId() + "). Brett " + hamburgerBrett);
 			this.notifyAll();
 		}
 	}
