@@ -38,8 +38,7 @@ public class HamburgerBrett {
 	}
 
 	public synchronized void fjernBurger() {
-
-		if (hamburgerBrett.isEmpty()) {
+		if (erTom() ) {
 			try {
 				System.out
 						.println(Thread.currentThread().getName() + " onsker aa ta hamburger, men brett tomt. Venter!");
@@ -52,10 +51,13 @@ public class HamburgerBrett {
 					+ "). Brett " + hamburgerBrett);
 			this.notifyAll();
 		}
-
 	}
 
-	public boolean erFul() {
+	private boolean erTom() {
+		return hamburgerBrett.isEmpty();
+	}
+
+	private boolean erFul() {
 		return hamburgerBrett.size() >= kAPASITET;
 	}
 
