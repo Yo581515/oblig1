@@ -1,4 +1,4 @@
-package oppgave2Alt1;
+package oppgave3;
 
 import java.util.Random;
 
@@ -18,7 +18,7 @@ public class Servitor extends Thread {
 		setName(navn + " (Servitør)");
 
 		while (true) {
-			int r = rand.nextInt(8) + 1;
+			int r = rand.nextInt(3) + 1;
 
 			try {
 				Thread.sleep(r * 1000);

@@ -1,30 +1,35 @@
-package oppgave2Alt1;
+package oppgave3;
 
 import java.util.Random;
 
-public class Servitor extends Thread {
+import javax.sql.rowset.spi.SyncFactory;
 
+public class Kokk extends Thread {
+	Random rand = new Random();
 	private HamburgerBrett brett;
 	private String navn;
-	Random rand = new Random();
 
-	public Servitor(HamburgerBrett brett, String navn) {
+	public Kokk(HamburgerBrett brett, String navn) {
 		this.brett = brett;
 		this.navn = navn;
 	}
 
 	@Override
 	public void run() {
-		setName(navn + " (Servitør)");
+		setName(navn+" (Kokk)");
 
 		while (true) {
-			int r = rand.nextInt(8) + 1;
+			int r = rand.nextInt(4) + 1;
 
 			try {
 				Thread.sleep(r * 1000);
 			} catch (InterruptedException e) {
 			}
-			brett.fjernBurger();
+
+				brett.leggTil();
+
+
 		}
 	}
+
 }

@@ -12,45 +12,47 @@ public class HamburgerBrett {
 		this.kAPASITET = kAPASITET;
 	}
 
-	public void leggTil() {
-		synchronized (this) {
-			if (!erFul()) {
-				Hamburger nyBurger = new Hamburger();
-				// Hjelpet aa navigere antall burgere paa brettet, og om kapasitet nummer er
-				// riktig
+	public synchronized void leggTil() {
+
+		if (erFul()) {
+			try {
+//				Anne (kokk) klar med hamburger, men brett fullt. Venter!
+				System.out.println(Thread.currentThread().getName() + " klar med hamburger, men brett fullt. Venter!");
+				this.wait();
+			} catch (InterruptedException e) {
+			}
+		} else {
+			Hamburger nyBurger = new Hamburger();
+			// Hjelpet aa navigere antall burgere paa brettet, og om kapasitet nummer er
+			// riktig
 //				System.out.println("hamburgerBrett.size()  = " + hamburgerBrett.size());
 //				System.out.println("kAPASITET              = " + kAPASITET);
-				nyBurger.setId(burgerNr);
-				hamburgerBrett.add(nyBurger);
-				System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNr
-						+ "). Brett: " + hamburgerBrett);
-				burgerNr++;
-				this.notifyAll();
-			} else {
-				try {
-					this.wait();
-				} catch (InterruptedException e) {
-				}
-			}
+			nyBurger.setId(burgerNr);
+			hamburgerBrett.add(nyBurger);
+			System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNr + "). Brett: "
+					+ hamburgerBrett);
+			burgerNr++;
+			this.notifyAll();
 		}
+
 	}
 
-	public void fjernBurger() {
-		synchronized (this) {
-			if (hamburgerBrett.isEmpty()) {
-				try {
-					System.out.println(
-							Thread.currentThread().getName() + " onsker aa ta hamburger, men brett tomt. Venter!");
-					this.wait();
-				} catch (InterruptedException e) {
-				}
-			} else {
-				Hamburger hFjernet = hamburgerBrett.remove();
-				System.out.println(Thread.currentThread().getName() + " tar av hamburger: (" + hFjernet.getId()
-						+ "). Brett " + hamburgerBrett);
-				this.notifyAll();
+	public synchronized void fjernBurger() {
+
+		if (hamburgerBrett.isEmpty()) {
+			try {
+				System.out
+						.println(Thread.currentThread().getName() + " onsker aa ta hamburger, men brett tomt. Venter!");
+				this.wait();
+			} catch (InterruptedException e) {
 			}
+		} else {
+			Hamburger hFjernet = hamburgerBrett.remove();
+			System.out.println(Thread.currentThread().getName() + " tar av hamburger: (" + hFjernet.getId()
+					+ "). Brett " + hamburgerBrett);
+			this.notifyAll();
 		}
+
 	}
 
 	public boolean erFul() {
