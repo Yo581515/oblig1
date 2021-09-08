@@ -1,7 +1,5 @@
 package oppgave2Alt3;
 
-import java.util.Random;
-
 public class Servitor extends Thread {
 
 //husker ikke

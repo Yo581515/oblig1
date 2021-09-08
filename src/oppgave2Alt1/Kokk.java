@@ -2,8 +2,6 @@ package oppgave2Alt1;
 
 import java.util.Random;
 
-import javax.sql.rowset.spi.SyncFactory;
-
 public class Kokk extends Thread {
 	Random rand = new Random();
 	private HamburgerBrett brett;

@@ -2,7 +2,6 @@ package oppgave3;
 
 import java.util.Random;
 
-import javax.sql.rowset.spi.SyncFactory;
 
 public class Kokk extends Thread {
 	Random rand = new Random();
