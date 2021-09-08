@@ -20,7 +20,7 @@ public class Main {
 			@Override
 			public void run() {
 				while (!(tekst.equals("quit"))) {
-					tekst = JOptionPane.showInputDialog("skriv her");
+					tekst = JOptionPane.showInputDialog("skriv quit aa slutte");
 					t.setTekst(tekst);
 				}
 			}
