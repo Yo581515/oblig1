@@ -1,4 +1,4 @@
-package oppgave3;
+package oppgave3Alt1;
 
 public class Main {
 

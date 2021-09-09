@@ -1,4 +1,4 @@
-package oppgave3;
+package oppgave3Alt2;
 
 import java.util.Random;
 
