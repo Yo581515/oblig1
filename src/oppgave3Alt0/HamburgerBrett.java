@@ -20,12 +20,13 @@ public class HamburgerBrett {
 	public void leggTil() {
 		try {
 //			lock.lock();
-			System.out.println("jeg skal leggeTil");
+			String threadName = Thread.currentThread().getName();
+			System.out.println(threadName+" vil leggeTil");
 			Hamburger nyBurger = new Hamburger();
 			nyBurger.setId(burgerNr);
 			hamburgerBrett.put(nyBurger);
 //			Anne (kokk) legger på hamburger (1). Brett: [1]
-			String threadName = Thread.currentThread().getName();
+			threadName = Thread.currentThread().getName();
 			System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
 			burgerNr++;
 			
@@ -42,11 +43,12 @@ public class HamburgerBrett {
 	public void fjernBurger() {
 		try {
 //			lock.lock();
-			System.out.println("jeg skal fjerne");
+			String threadName = Thread.currentThread().getName();
+			System.out.println(threadName+" vil fjerne");
 
 			Hamburger hFjernet = hamburgerBrett.take();
 //			Mia (servitør) tar av hamburger (5). Brett: [6]				
-			String threadName = Thread.currentThread().getName();
+			threadName = Thread.currentThread().getName();
 			System.out.println(
 					threadName + " tar av hamburger: " + "(" + hFjernet.getId() + "). Brett " + hamburgerBrett);
 		} catch (Exception e) {
