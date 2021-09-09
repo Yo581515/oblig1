@@ -27,7 +27,7 @@ public class HamburgerBrett {
 			nyBurger.setId(burgerNr);
 			
 			//ERROR HER
-			hamburgerBrett.put(nyBurger);
+			hamburgerBrett.add(nyBurger);
 			//ERROR HER
 			
 //			Anne (kokk) legger på hamburger (1). Brett: [1]
@@ -52,7 +52,7 @@ public class HamburgerBrett {
 			System.out.println(threadName+" vil fjerne");
 
 			//ERROR HER
-			Hamburger hFjernet = hamburgerBrett.take();
+			Hamburger hFjernet = hamburgerBrett.remove();
 			//ERROR HER
 			
 			System.out.println("etter take()");
