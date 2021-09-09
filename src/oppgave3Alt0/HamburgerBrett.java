@@ -22,10 +22,13 @@ public class HamburgerBrett {
 //			lock.lock();
 			String threadName = Thread.currentThread().getName();
 			System.out.println(threadName+" vil leggeTil");
+			
 			Hamburger nyBurger = new Hamburger();
 			nyBurger.setId(burgerNr);
 			hamburgerBrett.put(nyBurger);
 //			Anne (kokk) legger på hamburger (1). Brett: [1]
+			
+			
 			threadName = Thread.currentThread().getName();
 			System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
 			burgerNr++;

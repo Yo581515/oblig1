@@ -11,7 +11,7 @@ public class HamburgerBrett {
 	private BlockingQueue<Hamburger> hamburgerBrett ;
 	private int burgerNr = 1;
 	
-	private Lock lock = new ReentrantLock(true);
+	private Lock lock = new ReentrantLock();
 
 	public HamburgerBrett(int kAPASITET) {
 		this.hamburgerBrett = new LinkedBlockingQueue<>(kAPASITET);

@@ -8,12 +8,11 @@ import java.util.concurrent.locks.ReentrantLock;
 import oppgave2Alt1.Hamburger;
 
 public class HamburgerBrett {
-	
+
 	private BlockingQueue<Hamburger> hamburgerBrett;
 //	private int kAPASITET;
 	private int burgerNr = 1;
 
-	
 	private Lock lock = new ReentrantLock(true);
 
 	public HamburgerBrett(int kAPASITET) {
@@ -24,12 +23,14 @@ public class HamburgerBrett {
 	public void leggTil() {
 		try {
 			lock.lock();
+			String threadName = Thread.currentThread().getName();
+			System.out.println(threadName + " vil leggeTil");
 			if (!erFul()) {
 				Hamburger nyBurger = new Hamburger();
 				nyBurger.setId(burgerNr);
 				hamburgerBrett.put(nyBurger);
 //				Anne (kokk) legger på hamburger (1). Brett: [1]
-				String threadName = Thread.currentThread().getName();
+				threadName = Thread.currentThread().getName();
 				System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
 				burgerNr++;
 			}
@@ -44,10 +45,12 @@ public class HamburgerBrett {
 		try {
 			lock.lock();
 			if (!erTom()) {
+				String threadName = Thread.currentThread().getName();
+				System.out.println(threadName + " vil fjerne");
 
 				Hamburger hFjernet = hamburgerBrett.take();
 //				Mia (servitør) tar av hamburger (5). Brett: [6]				
-				String threadName = Thread.currentThread().getName();
+				threadName = Thread.currentThread().getName();
 				System.out.println(
 						threadName + " tar av hamburger: " + "(" + hFjernet.getId() + "). Brett " + hamburgerBrett);
 			}
@@ -63,7 +66,7 @@ public class HamburgerBrett {
 	}
 
 	private boolean erFul() {
-		return hamburgerBrett.remainingCapacity()==0;
+		return hamburgerBrett.remainingCapacity() == 0;
 	}
 
 }
