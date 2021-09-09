@@ -27,6 +27,7 @@ public class Main {
 //	Vi starter ...
 
 	private static void skrivUtHeader(String[] kokker, String[] servitorer, int kAPASITET) {
+		System.out.println("oppgave3Alt1");
 		System.out.println("I denne simuleringen har vi");
 		System.out.print(kokker.length + " kokker");
 		skrivUtTabell(kokker);
