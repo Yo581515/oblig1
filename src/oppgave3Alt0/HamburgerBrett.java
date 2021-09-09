@@ -17,9 +17,7 @@ public class HamburgerBrett {
 		try {
 			
 			hamburgerBrett.put(new Hamburger(++burgerNumer));
-			System.out.println(hamburgerBrett);
-//			System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNumer + "). Brett: "
-//					+ hamburgerBrett);
+
 		} catch (Exception e) {
 			System.out.println("leggtilException");
 		}
@@ -27,12 +25,8 @@ public class HamburgerBrett {
 
 	public void fjernBurger() {
 		try {
-//			Thread.sleep(1000);
-
-			
-			
-			System.out.println(Thread.currentThread().getName() + " tar av hamburger: " + "("
-					+ hamburgerBrett.take().getId() + "). Brett "+hamburgerBrett);
+			System.out.println(Thread.currentThread().getName() + " tar av hamburger: "
+					+ hamburgerBrett.take());
 		} catch (Exception e) {
 			System.out.println("fjernException");
 		}
