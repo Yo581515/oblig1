@@ -2,8 +2,7 @@ package oppgave3Alt0;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 public class HamburgerBrett {
 	private BlockingQueue<Hamburger> hamburgerBrett;
@@ -16,12 +15,10 @@ public class HamburgerBrett {
 
 	public void leggTil() {
 		try {
-//			String name = Thread.currentThread().getName();
-
+			
 			hamburgerBrett.put(new Hamburger(++burgerNumer));
 			System.out.println(hamburgerBrett);
-
-//			System.out.println(name + " legger paa hamburger (" + burgerNumer + "). Brett: "
+//			System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNumer + "). Brett: "
 //					+ hamburgerBrett);
 		} catch (Exception e) {
 			System.out.println("leggtilException");
@@ -32,8 +29,10 @@ public class HamburgerBrett {
 		try {
 //			Thread.sleep(1000);
 
+			
+			
 			System.out.println(Thread.currentThread().getName() + " tar av hamburger: " + "("
-					+ hamburgerBrett.take().getId() + "). Brett ");
+					+ hamburgerBrett.take().getId() + "). Brett "+hamburgerBrett);
 		} catch (Exception e) {
 			System.out.println("fjernException");
 		}
