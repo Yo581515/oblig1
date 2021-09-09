@@ -47,6 +47,8 @@ public class HamburgerBrett {
 			System.out.println(threadName+" vil fjerne");
 
 			Hamburger hFjernet = hamburgerBrett.take();
+			
+			System.out.println("etter take()");
 //			Mia (servitør) tar av hamburger (5). Brett: [6]				
 			threadName = Thread.currentThread().getName();
 			System.out.println(
