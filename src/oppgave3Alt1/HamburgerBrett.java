@@ -5,8 +5,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import oppgave2Alt1.Hamburger;
-
 public class HamburgerBrett {
 	private BlockingQueue<Hamburger> hamburgerBrett ;
 	private int burgerNr = 1;
