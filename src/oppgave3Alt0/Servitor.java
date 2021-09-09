@@ -10,12 +10,12 @@ public class Servitor extends Thread {
 
 	public Servitor(HamburgerBrett brett, String navn) {
 		this.brett = brett;
-		this.navn = navn;
+		this.navn = navn+ " (Servitør)" ;
 	}
 
 	@Override
 	public void run() {
-		setName(navn + " (Servitør)");
+		setName(navn);
 
 		while (true) {
 			int r = rand.nextInt(3) + 1;

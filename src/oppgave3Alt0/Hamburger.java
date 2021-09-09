@@ -1,12 +1,15 @@
 package oppgave3Alt0;
 
-import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Hamburger {
 
+//	public static AtomicInteger tall = new AtomicInteger(0);
 	private int id;
+	int number = 0;
 
 	public Hamburger() {
+//		this.id = tall.incrementAndGet();
 	}
 
 	public Hamburger(int id) {
@@ -16,33 +19,15 @@ public class Hamburger {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
-		this.id=id;
+		this.id = id;
 	}
+
 	@Override
 	public String toString() {
 		return id + "";
-		
-	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Hamburger other = (Hamburger) obj;
-		return id == other.id;
-	}
-	
-	
 
 }

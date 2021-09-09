@@ -2,7 +2,6 @@ package oppgave3Alt0;
 
 import java.util.Random;
 
-
 public class Kokk extends Thread {
 	Random rand = new Random();
 	private HamburgerBrett brett;
@@ -15,7 +14,7 @@ public class Kokk extends Thread {
 
 	@Override
 	public void run() {
-		setName(navn+" (Kokk)");
+		setName(navn + " (Kokk)");
 
 		while (true) {
 			int r = rand.nextInt(4) + 1;
@@ -25,8 +24,7 @@ public class Kokk extends Thread {
 			} catch (InterruptedException e) {
 			}
 
-				brett.leggTil();
-
+			brett.leggTil();
 
 		}
 	}

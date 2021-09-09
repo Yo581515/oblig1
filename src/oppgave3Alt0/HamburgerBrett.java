@@ -5,63 +5,36 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import oppgave2Alt1.Hamburger;
-
 public class HamburgerBrett {
-	private BlockingQueue<Hamburger> hamburgerBrett ;
-	private int burgerNr = 1;
-	
-//	private Lock lock = new ReentrantLock(true);
+	private BlockingQueue<Hamburger> hamburgerBrett;
 
 	public HamburgerBrett(int kAPASITET) {
 		this.hamburgerBrett = new LinkedBlockingQueue<>(kAPASITET);
 	}
 
+	private int burgerNumer = 0;
+
 	public void leggTil() {
 		try {
-//			lock.lock();
-			String threadName = Thread.currentThread().getName();
-			System.out.println(threadName+" vil leggeTil");
-			
-			Hamburger nyBurger = new Hamburger();
-			nyBurger.setId(burgerNr);
-			hamburgerBrett.put(nyBurger);
-//			Anne (kokk) legger på hamburger (1). Brett: [1]
-			
-			
-			threadName = Thread.currentThread().getName();
-			System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
-			burgerNr++;
-			
 
+			hamburgerBrett.put(new Hamburger(++burgerNumer));
+
+			System.out.println(Thread.currentThread().getName() + " legger paa hamburger (" + burgerNumer + "). Brett: "
+					+ hamburgerBrett);
 		} catch (Exception e) {
 			System.out.println("leggtilException");
-		} 
-		finally {
-//			lock.unlock();
 		}
-
 	}// metode
 
 	public void fjernBurger() {
 		try {
-//			lock.lock();
-			String threadName = Thread.currentThread().getName();
-			System.out.println(threadName+" vil fjerne");
-
-			Hamburger hFjernet = hamburgerBrett.take();
-//			Mia (servitør) tar av hamburger (5). Brett: [6]				
-			threadName = Thread.currentThread().getName();
-			System.out.println(
-					threadName + " tar av hamburger: " + "(" + hFjernet.getId() + "). Brett " + hamburgerBrett);
+			Thread.sleep(1000);
+			System.out.println(Thread.currentThread().getName() + " tar av hamburger: " + "("
+					+ hamburgerBrett.take().getId() + "). Brett " + hamburgerBrett);
 		} catch (Exception e) {
 			System.out.println("fjernException");
-		} 
-		finally {
-//			lock.unlock();
 		}
 
 	}// metode
-
 
 }
