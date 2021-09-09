@@ -25,7 +25,11 @@ public class HamburgerBrett {
 			System.out.println(threadName+" vil leggeTil");
 			Hamburger nyBurger = new Hamburger();
 			nyBurger.setId(burgerNr);
+			
+			//ERROR HER
 			hamburgerBrett.put(nyBurger);
+			//ERROR HER
+			
 //			Anne (kokk) legger på hamburger (1). Brett: [1]
 			threadName = Thread.currentThread().getName();
 			System.out.println(threadName + " legger paa hamburger (" + burgerNr + "). Brett: " + hamburgerBrett);
@@ -47,7 +51,9 @@ public class HamburgerBrett {
 			String threadName = Thread.currentThread().getName();
 			System.out.println(threadName+" vil fjerne");
 
+			//ERROR HER
 			Hamburger hFjernet = hamburgerBrett.take();
+			//ERROR HER
 			
 			System.out.println("etter take()");
 //			Mia (servitør) tar av hamburger (5). Brett: [6]				
