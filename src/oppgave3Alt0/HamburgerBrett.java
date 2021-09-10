@@ -26,7 +26,7 @@ public class HamburgerBrett {
 	public void fjernBurger() {
 		try {
 			System.out.println(Thread.currentThread().getName() + " tar av hamburger: "
-					+ hamburgerBrett.take());
+					+ hamburgerBrett.take()+ hamburgerBrett);
 		} catch (Exception e) {
 			System.out.println("fjernException");
 		}
