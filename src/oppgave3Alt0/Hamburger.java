@@ -6,10 +6,11 @@ public class Hamburger {
 
 //	public static AtomicInteger tall = new AtomicInteger(0);
 	private int id;
-	int number = 0;
+//	public static int number = 0;
 
 	public Hamburger() {
 //		this.id = tall.incrementAndGet();
+//		this.id = ++number;
 	}
 
 	public Hamburger(int id) {

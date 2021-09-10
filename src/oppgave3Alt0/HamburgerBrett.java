@@ -2,6 +2,7 @@ package oppgave3Alt0;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class HamburgerBrett {
@@ -11,13 +12,12 @@ public class HamburgerBrett {
 		this.hamburgerBrett = new LinkedBlockingQueue<>(kAPASITET);
 	}
 
-	private int burgerNumer = 0;
 
+	public static AtomicInteger tall = new AtomicInteger(0);
+	
 	public void leggTil() {
 		try {
-			
-			hamburgerBrett.put(new Hamburger(++burgerNumer));
-
+			hamburgerBrett.put(new Hamburger(tall.incrementAndGet()));
 		} catch (Exception e) {
 			System.out.println("leggtilException");
 		}
